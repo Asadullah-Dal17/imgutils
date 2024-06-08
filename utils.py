@@ -250,7 +250,7 @@ def frame_extractor(cam_id_or_video_path, dir_to_save="frames"):
     cap.release()
     cv.destroyAllWindows()
 
-
+def poly_points_tor_rect(points)
 if __name__ == "__main__":
     # list_of_colors = get_list_of_random_rgb_colors_with_decent_contrast(13)
     # print(list_of_colors)
