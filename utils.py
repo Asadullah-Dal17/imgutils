@@ -250,7 +250,23 @@ def frame_extractor(cam_id_or_video_path, dir_to_save="frames"):
     cap.release()
     cv.destroyAllWindows()
 
-def poly_points_tor_rect(points)
+
+def polygon_to_bounding_box(points, frame, draw=True):
+    # create bounding from hands landmarks
+    box = cv.boundingRect(points)
+    # utils.rect_corners(frame, box, (255, 255, 0))
+    x, y, w, h = box
+    rect = (
+        int(x - (w / 11)),
+        int(y - (h / 11)),
+        int(w + (w / 5)),
+        int(h + (h / 5)),
+    )
+    if draw:
+        rect_corners(frame, rect, (255, 0, 255))
+    return rect
+
+
 if __name__ == "__main__":
     # list_of_colors = get_list_of_random_rgb_colors_with_decent_contrast(13)
     # print(list_of_colors)
