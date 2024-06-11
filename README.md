@@ -1,4 +1,4 @@
-# Images Processing utilities.
+# Images Processing utilities
 
 > imgutils is repository which contains the utility for image processing, it help to draw better text on screen, draw transparent background shapes, etc.
 
@@ -8,6 +8,7 @@
 - [ ] contours detection
 - [ ] Image resizer
 - [ ] camera calibration
+- [ ] Pymunk simulation utilities
 
 ## Features
 
