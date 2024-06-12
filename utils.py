@@ -251,20 +251,23 @@ def frame_extractor(cam_id_or_video_path, dir_to_save="frames"):
     cv.destroyAllWindows()
 
 
-def polygon_to_bounding_box(points, frame, draw=True):
+def polygon_to_bounding_box(points, frame, draw=True, rescaling_box=False):
     # create bounding from hands landmarks
     box = cv.boundingRect(points)
     # utils.rect_corners(frame, box, (255, 255, 0))
     x, y, w, h = box
-    rect = (
-        int(x - (w / 11)),
-        int(y - (h / 11)),
-        int(w + (w / 5)),
-        int(h + (h / 5)),
-    )
+    if rescaling_box:
+        modified_bbox = (
+            int(x - (w / 11)),
+            int(y - (h / 11)),
+            int(w + (w / 5)),
+            int(h + (h / 5)),
+        )
+    else:
+        modified_bbox = box
     if draw:
-        rect_corners(frame, rect, (255, 0, 255))
-    return rect
+        rect_corners(frame, modified_bbox, (255, 100, 255))
+    return modified_bbox
 
 
 if __name__ == "__main__":
