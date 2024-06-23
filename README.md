@@ -4,7 +4,8 @@
 
 ## TODO list
 
-- [ ] create bounding box(rectangle) out of multiple points(polygon )
+- [x] create bounding box(rectangle) out of multiple points(polygon )
+- [ ] Add icons in image
 - [ ] contours detection
 - [ ] Image resizer
 - [ ] camera calibration
