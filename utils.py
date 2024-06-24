@@ -39,6 +39,14 @@ def get_bgr_colors(length=5):
     return bgr_colors
 
 
+class Overlay:
+    def __init__(self, icon_image) -> None:
+        self.icon_image = icon_image
+
+    def get_dimension(self):
+        self.icon_height, self.icon_height, self.icons_channels = self.icon_image.shape
+
+
 class FPS:
     def __init__(
         self,
@@ -270,13 +278,44 @@ def polygon_to_bounding_box(points, frame, draw=True, rescaling_box=False):
     return modified_bbox
 
 
+class camera_properties:
+
+    def __init__(self, cap):
+        self.cap = cap
+        if not self.cap.isOpened():
+            print("Error opening video stream or file")
+            exit(0)
+
+    def set_camera_to_hd(self):
+        current_dim = f"Current Dimension: Width: { self.cap.get(cv.CAP_PROP_FRAME_WIDTH)} Height{self.cap.get(cv.CAP_PROP_FRAME_HEIGHT)}"
+        self.cap.set(cv.CAP_PROP_FRAME_WIDTH, 1280)
+        self.cap.set(cv.CAP_PROP_FRAME_HEIGHT, 720)
+        now_dim = f"New Dimension: Width: {self.cap.get(cv.CAP_PROP_FRAME_WIDTH)} height: { self.cap.get(cv.CAP_PROP_FRAME_HEIGHT)}"
+        print(current_dim)
+        print("________________________________________\n")
+        print(now_dim, "set to HD")
+
+    def set_camera_to_full_hd(self):
+        current_dim = f"Current Dimension: Width: { self.cap.get(cv.CAP_PROP_FRAME_WIDTH)} Height: { self.cap.get(cv.CAP_PROP_FRAME_HEIGHT)}"
+        self.cap.set(cv.CAP_PROP_FRAME_WIDTH, 1920)
+        self.cap.set(cv.CAP_PROP_FRAME_HEIGHT, 1080)
+        now_dim = f"New Dimension: Width: {self.cap.get(cv.CAP_PROP_FRAME_WIDTH)} height: { self.cap.get(cv.CAP_PROP_FRAME_HEIGHT)}"
+        print(current_dim)
+        print("________________________________________\n")
+        print(now_dim, "set to Full HD")
+
+
 if __name__ == "__main__":
     # list_of_colors = get_list_of_random_rgb_colors_with_decent_contrast(13)
     # print(list_of_colors)
     # image = np.zeros((600, 600, 3), dtype=np.uint8)
     # -- Checking FPS function. --
     fps_calc = FPS()
+
     cap = cv.VideoCapture(0)
+    cp = camera_properties(cap)
+    cp.set_camera_to_full_hd()
+
     while True:
         ret, frame = cap.read()
         if ret is False:
