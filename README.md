@@ -6,6 +6,8 @@
 
 - [x] create bounding box(rectangle) out of multiple points(polygon )
 - [ ] camera 📷 properties add
+  > - [x] camera 📷 dimension setting 🖼️
+  > - [ ] setting the contrast and brightness
 - [ ] Add icons in image
 - [ ] contours detection
 - [ ] Image resizer
