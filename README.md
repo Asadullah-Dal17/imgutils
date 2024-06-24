@@ -5,6 +5,7 @@
 ## TODO list
 
 - [x] create bounding box(rectangle) out of multiple points(polygon )
+- [ ] camera 📷 properties add
 - [ ] Add icons in image
 - [ ] contours detection
 - [ ] Image resizer
