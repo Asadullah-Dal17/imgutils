@@ -12,6 +12,7 @@
 - [ ] contours detection
 - [ ] Image resizer
 - [ ] camera calibration
+- [ ] ArUco marker detection 
 - [ ] Pymunk simulation utilities
 
 ## Features
