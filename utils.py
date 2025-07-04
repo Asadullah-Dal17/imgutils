@@ -288,6 +288,8 @@ class camera_properties:
 
     def set_camera_to_hd(self):
         current_dim = f"Current Dimension: Width: { self.cap.get(cv.CAP_PROP_FRAME_WIDTH)} Height{self.cap.get(cv.CAP_PROP_FRAME_HEIGHT)}"
+        self.cap.set(cv.CAP_PROP_FOURCC, cv.VideoWriter_fourcc(*"MJPG"))
+        self.cap.set(cv.CAP_PROP_FPS, 30)
         self.cap.set(cv.CAP_PROP_FRAME_WIDTH, 1280)
         self.cap.set(cv.CAP_PROP_FRAME_HEIGHT, 720)
         now_dim = f"New Dimension: Width: {self.cap.get(cv.CAP_PROP_FRAME_WIDTH)} height: { self.cap.get(cv.CAP_PROP_FRAME_HEIGHT)}"
@@ -296,7 +298,10 @@ class camera_properties:
         print(now_dim, "set to HD")
 
     def set_camera_to_full_hd(self):
+
         current_dim = f"Current Dimension: Width: { self.cap.get(cv.CAP_PROP_FRAME_WIDTH)} Height: { self.cap.get(cv.CAP_PROP_FRAME_HEIGHT)}"
+        self.cap.set(cv.CAP_PROP_FOURCC, cv.VideoWriter_fourcc(*"MJPG"))
+        self.cap.set(cv.CAP_PROP_FPS, 30)
         self.cap.set(cv.CAP_PROP_FRAME_WIDTH, 1920)
         self.cap.set(cv.CAP_PROP_FRAME_HEIGHT, 1080)
         now_dim = f"New Dimension: Width: {self.cap.get(cv.CAP_PROP_FRAME_WIDTH)} height: { self.cap.get(cv.CAP_PROP_FRAME_HEIGHT)}"
@@ -312,9 +317,9 @@ if __name__ == "__main__":
     # -- Checking FPS function. --
     fps_calc = FPS()
 
-    cap = cv.VideoCapture(0)
+    cap = cv.VideoCapture(2,cv.CAP_V4L2)
     cp = camera_properties(cap)
-    cp.set_camera_to_full_hd()
+    cp.set_camera_to_hd()
 
     while True:
         ret, frame = cap.read()
