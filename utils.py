@@ -28,8 +28,8 @@ def name_to_color(name):
 
 def get_bgr_colors(length=5):
     bgr_colors = []
-    for color in matplotlib.colors.CSS4_COLORS.values():
-        r, g, b = matplotlib.colors.to_rgb(color)
+    for color in matplotlib.colors.CSS4_COLORS.values(): # type: ignore
+        r, g, b = matplotlib.colors.to_rgb(color) # type: ignore
         r = int(r * 255)
         b = int(b * 255)
         g = int(g * 255)
@@ -67,7 +67,7 @@ class FPS:
             image,
             f"FPS: {fps:.2f}",
             fonts=cv.FONT_HERSHEY_TRIPLEX,
-            scaling=0.6,
+            scaling=0.6, # type: ignore
             color=(55, 255, 255),
             bg_color=(55, 1, 1),
         )
