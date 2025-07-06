@@ -17,6 +17,10 @@ Welcome to **imgutils**! This repository provides a collection of handy utilitie
 - [ ] Image resizer
 - [ ] Camera calibration
 - [ ] ArUco marker detection
+    - [ ] Pose Estimation 
+    - [ ] Distance Estimation
+    - [ ] Simple AR Project(Image Augmentation)
+    - [ ] Floating Image viewer 
 - [ ] Pymunk simulation utilities
 
 ## ✨ Features
